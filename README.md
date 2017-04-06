@@ -1,6 +1,6 @@
 # Flux Note
 
-[![Build Status](https://travis-ci.org/remylii/flux-note.svg?branch=release)](https://travis-ci.org/remylii/flux-note)
+[![Build Status](https://travis-ci.org/remylii/af.expda.svg?branch=release)](https://travis-ci.org/remylii/af.expda)
 
 ## Stack
 
