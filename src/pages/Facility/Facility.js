@@ -2,21 +2,18 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import GlobalHeader from '../../components/GlobalHeader/GlobalHeader';
-import NoteDetail from './NoteDetail';
+import FacilityDetail from '../../components/FacilityDetail/FacilityDetail';
 
-export default class Note extends React.Component {
+export default class Facility extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log('#Note');
-    console.dir(props);
   }
 
   presets() {
     return (
       <div>
-        <h2>Note</h2>
-        <h3>Please select a note.</h3>
+        <h2>Facility prests</h2>
+        <p>hasn't id</p>
       </div>
     );
   }
@@ -26,7 +23,8 @@ export default class Note extends React.Component {
       <div>
         <GlobalHeader />
 
-        <Route path="/note/:id" component={NoteDetail} />
+        <h2>Facility Container</h2>
+        <Route path="/facility/:id" component={FacilityDetail} />
         <Route exact path={this.props.match.url} render={this.presets} />
       </div>
     );

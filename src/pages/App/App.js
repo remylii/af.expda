@@ -1,19 +1,21 @@
 import React from 'react';
 import { Container } from 'flux/utils';
-import NoteAction from '../../actions/NoteAction';
-import noteStore from '../../stores/noteStore';
+
+import FacilityAction from '../../actions/FacilityAction';
+import facilityStore from '../../stores/facilityStore';
+
 
 import GlobalHeader from '../../components/GlobalHeader/GlobalHeader';
-import NoteList from '../../components/NoteList/NoteList';
+import FacilityList from '../../components/FacilityList/FacilityList';
 
 class App extends React.Component {
 
   static getStores() {
-    return [noteStore];
+    return [facilityStore]
   }
 
   static calculateState() {
-    return noteStore.getState();
+    return facilityStore.getState();
   }
 
   constructor(props) {
@@ -21,22 +23,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('App#componentDidMount');
-    NoteAction.fetchNotes();
+    console.log('App# componentDidMount');
+    FacilityAction.fetchHotels(this.state.condition);
   }
 
   render() {
-    console.group('App#render');
-    console.dir(this.state);
-    console.groupEnd('App#render');
-
     return (
       <div>
         <GlobalHeader />
 
         <main>
-          <h2 className="App-PageTitle">pages / App</h2>
-          <NoteList notes={this.state.notes} />
+          <h2 className="App-PageTitle">App</h2>
+          <FacilityList conditions={this.state.conditions} hotels={this.state.hotels} />
         </main>
       </div>
     );

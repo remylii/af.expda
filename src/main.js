@@ -5,8 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './main.css';
 
 import App from './pages/App/App';
-import Topic from './pages/Topic/Topic';
-import Note from './pages/Note/Note';
+import Facility from './pages/Facility/Facility';
 import NotFound from './pages/Error/NotFound';
 
 const element = document.getElementById('app');
@@ -16,8 +15,7 @@ render(
     <div>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/topic" component={Topic} />
-        <Route path="/note" component={Note} />
+        <Route path="/facility" component={Facility} />
         <Route component={NotFound} />
       </Switch>
     </div>

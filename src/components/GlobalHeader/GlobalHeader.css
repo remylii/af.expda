@@ -1,3 +1,7 @@
 .GlobalHeader-header {
   font-size: 1.2rem;
 }
+
+.GlobalHeader-nav {
+  list-style: none;
+}

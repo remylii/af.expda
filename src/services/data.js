@@ -2,17 +2,12 @@
 module.exports = [
   {
     "id": 1,
-    "title": "react-router-domに対応した",
-    "body": "つらい"
+    "Name": "フォーシーズンズホテル丸の内 東京",
+    "Description": "東京にあるファミリー向けのこのホテルは、ビジネス地区にあり、KITTE、皇居、東京証券取引所から 2 km 圏内です。歌舞伎座および皇居東御苑も 3 km 圏内です。"
   },
   {
     "id": 2,
-    "title": "webpack-dev-serverのhistoryApiFallback",
-    "body": "これ大事"
-  },
-  {
-    "id": 3,
-    "title": "それっぽいこと",
-    "body": "そろそろ書かないと怒られる"
+    "Name": "パーク ハイアット 東京",
+    "Description": "新宿に位置するこの高級ホテルは、東京オペラシティ コンサートホール、明治神宮、東京都庁舎から 2 km 圏内です。新宿御苑および代々木公園も 3 km 圏内です。"
   }
 ];

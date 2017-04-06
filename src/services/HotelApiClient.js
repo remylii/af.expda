@@ -1,10 +1,9 @@
 const LATENCY = 200;
 
-let notes = require('./data');
+let hotels = require('./data');
 
-export default class NoteApiClient {
+export default class HotelApiClient {
   static request(response) {
-    console.log('services/NoteApiClient#request');
     return new Promise(resolve => {
       setTimeout(() => resolve(response), LATENCY);
     });
@@ -14,8 +13,7 @@ export default class NoteApiClient {
     return new Promise(resolve => setTimeout(resolve, LATENCY));
   }
 
-  static fetchNotes() {
-    console.log('Services/NoteApiClient#fetchNotes');
-    return this.request(notes);
+  static fetchHotels(conditions) {
+    return this.request(hotels);
   }
 }
