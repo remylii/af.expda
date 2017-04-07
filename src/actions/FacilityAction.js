@@ -13,4 +13,8 @@ export default class FacilityAction {
       dispatch({ type: 'hotel/choose', selectedId: id, hotel });
     });
   }
+
+  static initLoad() {
+    return dispatch({ type: 'hotel/init' });
+  }
 }

@@ -20,6 +20,8 @@ class PlanStore extends ReduceStore {
           hotel: action.hotel
         });
 
+      case 'hotel/init':
+        return Object.assign({}, state, { loaded: false });
       default:
         return state;
     }

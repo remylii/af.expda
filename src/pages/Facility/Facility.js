@@ -25,8 +25,12 @@ class Facility extends React.Component {
     console.log('Facility# componentDidMount');
     const id = this.props.match.params.id || '';
     if (id) {
-      FacilityAction.findHotelById(id);
+      FacilityAction.findHotelById(parseInt(id));
     }
+  }
+
+  componentWillUnmount() {
+    FacilityAction.initLoad();
   }
 
   render() {
