@@ -1,6 +1,6 @@
 const LATENCY = 200;
 
-let hotels = require('./data');
+let stub = require('./hotelSearchData.json');
 
 export default class HotelApiClient {
   static request(response) {
@@ -14,11 +14,11 @@ export default class HotelApiClient {
   }
 
   static fetchHotels(conditions) {
-    return this.request(hotels);
+    return this.request(stub.HotelInfoList.HotelInfo);
   }
 
   static findHotelById(id) {
-    let tmp = hotels.filter(elem => elem.id === id);
+    let tmp = stub.HotelInfoList.HotelInfo.filter(elem => elem.HotelID === id);
     const hotel = tmp[0] || { id: id, Name: 'ほげほげ', Description: 'ほげほげほげー' };
     return this.request(hotel);
   }

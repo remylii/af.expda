@@ -5,6 +5,7 @@ import planStore from '../../stores/planstore';
 import FacilityAction from '../../actions/FacilityAction';
 
 import FacilityDetail from '../../components/FacilityDetail/FacilityDetail';
+import RoomTypeList from '../../components/RoomTypeList/RoomTypeList';
 
 class Facility extends React.Component {
 
@@ -25,7 +26,7 @@ class Facility extends React.Component {
     console.log('Facility# componentDidMount');
     const id = this.props.match.params.id || '';
     if (id) {
-      FacilityAction.findHotelById(parseInt(id));
+      FacilityAction.findHotelById(id);
     }
   }
 
@@ -43,6 +44,7 @@ class Facility extends React.Component {
       <div>
         <h3>Facility Container</h3>
         <FacilityDetail hotel={this.state.hotel} />
+        <RoomTypeList roomTypeList={this.state.hotel.RoomTypeList} />
       </div>
     );
   }

@@ -5,8 +5,8 @@ export default class FacilityList extends React.Component {
 
   hotelItem(hotel) {
     return (
-      <div key={hotel.id}>
-        <Link to={`/facility/${hotel.id}`}>
+      <div key={hotel.HotelID}>
+        <Link to={`/facility/${hotel.HotelID}`}>
           <h4>{hotel.Name}</h4>
         </Link>
         <p>{hotel.Description}</p>
