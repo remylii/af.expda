@@ -7,4 +7,10 @@ export default class FacilityAction {
       dispatch({ type: 'hotels/fetch', hotels });
     });
   }
+
+  static findHotelById(id) {
+    return HotelApiClient.findHotelById(id).then(hotel => {
+      dispatch({ type: 'hotel/choose', selectedId: id, hotel });
+    });
+  }
 }

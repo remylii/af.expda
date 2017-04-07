@@ -1,32 +1,47 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Container } from 'flux/utils';
 
-import GlobalHeader from '../../components/GlobalHeader/GlobalHeader';
+import planStore from '../../stores/planstore';
+import FacilityAction from '../../actions/FacilityAction';
+
 import FacilityDetail from '../../components/FacilityDetail/FacilityDetail';
 
-export default class Facility extends React.Component {
-  constructor(props) {
-    super(props);
+class Facility extends React.Component {
+
+  static getStores() {
+    return [planStore];
   }
 
-  presets() {
-    return (
-      <div>
-        <h2>Facility prests</h2>
-        <p>hasn't id</p>
-      </div>
-    );
+  static calculateState() {
+    return planStore.getState();
+  }
+
+  constructor(props) {
+    super(props);
+    console.log('Facility# construcotr');
+  }
+
+  componentDidMount() {
+    console.log('Facility# componentDidMount');
+    const id = this.props.match.params.id || '';
+    if (id) {
+      FacilityAction.findHotelById(id);
+    }
   }
 
   render() {
+    console.log('Facility# render');
+    if (!this.state.loaded) {
+      return null;
+    }
+
     return (
       <div>
-        <GlobalHeader />
-
-        <h2>Facility Container</h2>
-        <Route path="/facility/:id" component={FacilityDetail} />
-        <Route exact path={this.props.match.url} render={this.presets} />
+        <h3>Facility Container</h3>
+        <FacilityDetail hotel={this.state.hotel} />
       </div>
     );
   }
 }
+
+export default Container.create(Facility);

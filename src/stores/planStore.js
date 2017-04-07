@@ -1,22 +1,23 @@
 import { ReduceStore } from 'flux/utils';
 import dispatcher from '../dispatcher';
 
-class FacilityStore extends ReduceStore {
+class PlanStore extends ReduceStore {
   getInitialState() {
     return {
-      conditions: {
-        dates: ''
-      },
-      hotels: [],
-      choose: {},
+      loaded: false,
+      selectedId: 0,
+      hotel: {},
+      plans: []
     };
   }
 
   reduce(state, action) {
     switch (action.type) {
-      case 'hotels/fetch':
+      case 'hotel/choose':
         return Object.assign({}, state, {
-          hotels: action.hotels
+          loaded: true,
+          selectedId: action.selectedId,
+          hotel: action.hotel
         });
 
       default:
@@ -25,4 +26,4 @@ class FacilityStore extends ReduceStore {
   }
 }
 
-export default new FacilityStore(dispatcher);
+export default new PlanStore(dispatcher);
