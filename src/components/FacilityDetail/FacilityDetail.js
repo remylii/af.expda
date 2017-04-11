@@ -2,11 +2,23 @@ import React from 'react';
 
 export default class FacilityDetail extends React.Component {
 
+  emptyDetail () {
+    return (
+      <div>
+        <h2>No Facility</h2>
+      </div>
+    );
+  }
+
   render() {
     console.dir(this.props.hotel);
     const hotel = this.props.hotel;
-
     const amenities = [];
+
+    if (!hotel.HotelID) {
+      return this.emptyDetail();
+    }
+
     if (typeof hotel.AmenityList.Amenity === 'string') {
       amenities.push(<li key='hotel-amenitylist-amenity-0'>{ hotel.AmenityList.Amenity }</li>);
     } else {

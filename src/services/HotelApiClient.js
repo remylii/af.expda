@@ -19,7 +19,7 @@ export default class HotelApiClient {
 
   static findHotelById(id) {
     let tmp = stub.HotelInfoList.HotelInfo.filter(elem => elem.HotelID === id);
-    const hotel = tmp[0] || { id: id, Name: 'ほげほげ', Description: 'ほげほげほげー' };
+    const hotel = tmp[0] || {};
     return this.request(hotel);
   }
 }

@@ -24,7 +24,8 @@ export default class RoomTypeList extends React.Component {
 
   render() {
     console.log('RoomTypeList# render');
-    const roomList = this.props.roomTypeList.RoomType;
+
+    const roomList = (!this.props.roomTypeList) ? [] : this.props.roomTypeList.RoomType;
     const items = [];
 
     for (let i in roomList) {
