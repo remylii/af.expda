@@ -1,0 +1,60 @@
+.FacilityList .title {
+  font-size: 1.4rem;
+}
+
+.FacilityList-item {
+  margin-bottom: 30px;
+  padding: 8px;
+  border-bottom: 3px solid;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 100%;
+  overflow: hidden;
+}
+
+.FacilityList-item .image {
+  display: inline-block;
+}
+
+.FacilityList-item .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.FacilityList-item .presentation {
+  display: inline-block;
+  margin: 0 5px 5px 15px;
+  vertical-align: top;
+  max-width: 800px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.FacilityList-item .title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.FacilityList-item .province {
+  margin: 10px 0;
+  color: #6c7c11;
+  letter-spacing: 1px;
+  font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+.FacilityList-item .province::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 9px;
+  margin-right: 3px;
+  border-left: 2px solid;
+  vertical-align: -1px;
+}
+
+.FacilityList-item .description {
+  margin-top: 0;
+  padding-right: 15px;
+}

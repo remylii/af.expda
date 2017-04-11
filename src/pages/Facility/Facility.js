@@ -41,8 +41,8 @@ class Facility extends React.Component {
     }
 
     return (
-      <div>
-        <h3>Facility Container</h3>
+      <div className="Facility">
+        <h3 className="title">Facility Container</h3>
         <FacilityDetail hotel={this.state.hotel} />
         <RoomTypeList roomTypeList={this.state.hotel.RoomTypeList} />
       </div>
