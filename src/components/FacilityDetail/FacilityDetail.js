@@ -21,6 +21,41 @@ export default class FacilityDetail extends React.Component {
     return <span className={ name }></span>;
   }
 
+  priceDescription(hotel) {
+    function amountFormat(str) {
+        var num = new String(str).replace(/,/g, "");
+        while(num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+        return num;
+    }
+
+    const total_value = parseInt(hotel.Price.TotalRate.Value);
+    const amount = amountFormat(total_value);
+    let promotion;
+
+    if (hotel.Promotion) {
+      let promotion_amount = amountFormat(total_value - parseInt(hotel.Promotion.Amount.Value));
+      promotion = (
+        <div className="promotion-box">
+          <p className="promotion-arrow"></p>
+          <div>
+            <p className="promotion-description">{ hotel.Promotion.Description }</p>
+            <div className="rate promotion-rate"><b>{ promotion_amount }</b>円</div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="price-description">
+        <div className="price-box">
+          <p>料金平均</p>
+          <div className="rate total-rate"><b>{ amount }</b>円</div>
+        </div>
+        { promotion }
+      </div>
+    );
+  }
+
   render() {
     console.dir(this.props.hotel);
     const hotel = this.props.hotel;
@@ -40,6 +75,8 @@ export default class FacilityDetail extends React.Component {
 
     const FacilityImage = this.largeImage(hotel.ThumbnailUrl);
 
+    const PriceDescription = this.priceDescription(hotel);
+
     return (
       <div className="FacilityDetail">
         <h2 className="FacilityDetail-title">{ hotel.Name }</h2>
@@ -52,8 +89,11 @@ export default class FacilityDetail extends React.Component {
               <p className="linear">{ hotel.Location.Province } { hotel.Location.City } { hotel.Location.StreetAddress } [{ hotel.Location.Country }]</p>
               <p>{ hotel.Location.GeoLocation.Latitude }, { hotel.Location.GeoLocation.Longitude }</p>
               <p className="linear">{ hotel.Description }</p>
+            </div>
+            <div className="description">
               <p>{ this.iconStar(hotel.StarRating) } { hotel.GuestRating } / ReviewCount: ({ hotel.GuestReviewCount })</p>
             </div>
+            { PriceDescription }
           </div>
         </div>
         <table>

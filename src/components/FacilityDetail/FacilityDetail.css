@@ -18,6 +18,7 @@
   padding: 8px;
   background-color: #fff;
   width: 100%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .FacilityDetail-item .image {
@@ -93,4 +94,53 @@
 
 .FacilityDetail-item .icon-star-5::before {
   content: "\002605 \002605 \002605 \002605 \002605";
+}
+
+.FacilityDetail-item .price-description {
+  max-width: 760px;
+  position: relative;
+  top: 0;
+}
+
+.price-description div,
+.price-description .promotion-arrow {
+  display: inline-block;
+}
+
+.promotion-arrow {
+  position: relative;
+  left: 0;
+}
+
+.promotion-arrow::before {
+  content: "";
+  display: inline-block;
+  margin: 0 5px 0 15px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #bbb;
+}
+
+.price-description {
+  margin-bottom: 15px;
+}
+
+.price-description .rate b {
+  margin-right: 3px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #cc3232;
+}
+
+.rate.promotion-rate b {
+  font-size: 2.2rem;
+  color: #cf2a2a;
+}
+
+.promotion-description {
+  font-size: 1.3rem;
+  color: #2f7000;
 }
