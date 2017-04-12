@@ -1,0 +1,96 @@
+.FacilityDetail {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.FacilityDetail-title {
+  margin: 15px 0 20px;
+  padding-left: 5px;
+  border-left: 3px solid #8799e4;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.FacilityDetail-item {
+  margin-bottom: 30px;
+  padding: 8px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.FacilityDetail-item .image {
+  display: inline-block;
+  max-width: 255px;
+  max-height: 200px;
+}
+
+.FacilityDetail-item .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.FacilityDetail-item .image img:hover {
+  opacity: 0.7;
+}
+
+.FacilityDetail-item .presentation {
+  display: inline-block;
+  margin: 0 5px 5px 20px;
+  vertical-align: top;
+  max-width: 760px;
+}
+
+.FacilityDetail-item .presentation .description {
+  margin-bottom: 20px;
+}
+
+.FacilityDetail-item .description p {
+  margin: 0 0 10px;
+}
+
+.FacilityDetail-item .description p.linear {
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+.FacilityDetail-item .icon {
+  position: relative;
+  line-height: inherit;
+  left: 0;
+  letter-spacing: 0;
+}
+
+.FacilityDetail-item .icon::before {
+  display: inline-block;
+  position: relative;
+  font-family: UITKIcons;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  color: #ffbe00;
+}
+
+.FacilityDetail-item .icon-star-1::before {
+  content: "\002605";
+}
+
+.FacilityDetail-item .icon-star-2::before {
+  content: "\002605 \002605";
+}
+
+.FacilityDetail-item .icon-star-3::before {
+  content: "\002605 \002605 \002605";
+}
+
+.FacilityDetail-item .icon-star-4::before {
+  content: "\002605 \002605 \002605 \002605";
+}
+
+.FacilityDetail-item .icon-star-5::before {
+  content: "\002605 \002605 \002605 \002605 \002605";
+}

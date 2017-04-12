@@ -4,10 +4,21 @@ export default class FacilityDetail extends React.Component {
 
   emptyDetail () {
     return (
-      <div>
-        <h2>No Facility</h2>
+      <div className="FacilityDetail">
+        <h2 className="FacilityDetail-title">No Facility</h2>
       </div>
     );
+  }
+
+  largeImage(img_path) {
+    const large_img_path = img_path.replace(/t\.jpg$/g, "l.jpg");
+    return <img src={ large_img_path } />;
+  }
+
+  iconStar(rating) {
+    const rate = parseInt(rating, 10);
+    const name = 'icon icon-star-' + rate;
+    return <span className={ name }></span>;
   }
 
   render() {
@@ -27,9 +38,24 @@ export default class FacilityDetail extends React.Component {
       }
     }
 
+    const FacilityImage = this.largeImage(hotel.ThumbnailUrl);
+
     return (
-      <div>
-        <h2>{ hotel.Name }</h2>
+      <div className="FacilityDetail">
+        <h2 className="FacilityDetail-title">{ hotel.Name }</h2>
+        <div className="FacilityDetail-item">
+          <div className="image">
+            { FacilityImage }
+          </div>
+          <div className="presentation">
+            <div className="description">
+              <p className="linear">{ hotel.Location.Province } { hotel.Location.City } { hotel.Location.StreetAddress } [{ hotel.Location.Country }]</p>
+              <p>{ hotel.Location.GeoLocation.Latitude }, { hotel.Location.GeoLocation.Longitude }</p>
+              <p className="linear">{ hotel.Description }</p>
+              <p>{ this.iconStar(hotel.StarRating) } { hotel.GuestRating } / ReviewCount: ({ hotel.GuestReviewCount })</p>
+            </div>
+          </div>
+        </div>
         <table>
           <tbody>
             <tr>
@@ -41,17 +67,6 @@ export default class FacilityDetail extends React.Component {
               <td>{ hotel.Name }</td>
             </tr>
             <tr>
-              <th>Description</th>
-              <td>{ hotel.Description }</td>
-            </tr>
-            <tr>
-              <th>Location</th>
-              <td>
-                <p>{ hotel.Location.StreetAddress }{ hotel.Location.City }{ hotel.Location.province }</p>
-                <p>{ hotel.Location.GeoLocation.Latitude }, { hotel.Location.GeoLocation.Longitude }</p>
-              </td>
-            </tr>
-            <tr>
               <th>CheckInStartTime / CheckInEndTime / CheckOutTime</th>
               <td>{ hotel.CheckInStartTime } / { hotel.CheckInEndTime } / { hotel.CheckOutTime }</td>
             </tr>
@@ -59,16 +74,6 @@ export default class FacilityDetail extends React.Component {
               <th>DetailsUrl</th>
               <td>
                 <a href={ hotel.DetailsUrl } target="_blank">{ hotel.DetailsUrl }</a>
-              </td>
-            </tr>
-            <tr>
-              <th>StarRating / GuestRating ( GuestReviewCount )</th>
-              <td>{ hotel.StarRating } / { hotel.GuestRating } ({ hotel.GuestReviewCount })</td>
-            </tr>
-            <tr>
-              <th>ThumbnailUrl</th>
-              <td>
-                <img src={ hotel.ThumbnailUrl } alt="ThumbnailUrl" />
               </td>
             </tr>
             <tr>
