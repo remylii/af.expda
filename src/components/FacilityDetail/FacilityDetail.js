@@ -59,18 +59,20 @@ export default class FacilityDetail extends React.Component {
   render() {
     console.dir(this.props.hotel);
     const hotel = this.props.hotel;
-    const amenities = [];
+    let amenities = '';
 
     if (!hotel.HotelID) {
       return this.emptyDetail();
     }
 
     if (typeof hotel.AmenityList.Amenity === 'string') {
-      amenities.push(<li key='hotel-amenitylist-amenity-0'>{ hotel.AmenityList.Amenity }</li>);
+      amenities = hotel.AmenityList.Amenity;
+      // amenities.push(<li key='hotel-amenitylist-amenity-0'>{ hotel.AmenityList.Amenity }</li>);
     } else {
-      for (let v in hotel.AmenityList.Amenity) {
-        amenities.push(<li key={`hotel-amenitylist-amenity-${v}`}>{ hotel.AmenityList.Amenity[v] }</li>);
-      }
+      amenities = hotel.AmenityList.Amenity.join(', ');
+      // for (let v in hotel.AmenityList.Amenity) {
+      //   amenities.push(<li key={`hotel-amenitylist-amenity-${v}`}>{ hotel.AmenityList.Amenity[v] }</li>);
+      // }
     }
 
     const FacilityImage = this.largeImage(hotel.ThumbnailUrl);
@@ -79,8 +81,8 @@ export default class FacilityDetail extends React.Component {
 
     return (
       <div className="FacilityDetail">
-        <h2 className="FacilityDetail-title">{ hotel.Name }</h2>
-        <div className="FacilityDetail-item">
+        <h1 className="FacilityDetail-title">{ hotel.Name }</h1>
+        <div className="FacilityDetail-item panel">
           <div className="image">
             { FacilityImage }
           </div>
@@ -96,62 +98,23 @@ export default class FacilityDetail extends React.Component {
             { PriceDescription }
           </div>
         </div>
-        <table>
-          <tbody>
-            <tr>
-              <th>HotelID</th>
-              <td>{ hotel.HotelID }</td>
-            </tr>
-            <tr>
-              <th>Name</th>
-              <td>{ hotel.Name }</td>
-            </tr>
-            <tr>
-              <th>CheckInStartTime / CheckInEndTime / CheckOutTime</th>
-              <td>{ hotel.CheckInStartTime } / { hotel.CheckInEndTime } / { hotel.CheckOutTime }</td>
-            </tr>
-            <tr>
-              <th>DetailsUrl</th>
-              <td>
-                <a href={ hotel.DetailsUrl } target="_blank">{ hotel.DetailsUrl }</a>
-              </td>
-            </tr>
-            <tr>
-              <th>AmenityList</th>
-              <td>
-                <ul>
-                  { amenities }
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <th>Promotion</th>
-              <td>
-                <p>Amount: { (!hotel.Promotion) ? '' : hotel.Promotion.Amount.Value }</p>
-                <p>{ (!hotel.Promotion) ? '割引情報なし' : hotel.Promotion.Description }</p>
-              </td>
-            </tr>
-            <tr>
-              <th>Price</th>
-              <td>
-                <dl>
-                  <dt>BaseRate</dt>
-                  <dd>{ hotel.Price.BaseRate.Value }</dd>
-                  <dt>TaxRcAndFees</dt>
-                  <dd>{ hotel.Price.TaxRcAndFees.Value }</dd>
-                  <dt>TotalRate</dt>
-                  <dd>{ hotel.Price.TotalRate.Value }</dd>
-                </dl>
-              </td>
-            </tr>
-            <tr>
-              <th>HotelMandatoryTaxesAndFees</th>
-              <td>
-                { (!hotel.HotelMandatoryTaxesAndFees) ? '' : hotel.HotelMandatoryTaxesAndFees.Value }
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <h2 className="FacilityDetail-title">Status</h2>
+        <div className="FacilityDetail-item">
+          <dl>
+            <dt>詳細</dt>
+            <dd><a href={ hotel.DetailsUrl } target="_blank">{ hotel.DetailsUrl }</a></dd>
+            <dt>チェックイン</dt>
+            <dd>{ hotel.CheckInStartTime }{ (hotel.CheckInEndTime) ? ' 〜 ' + hotel.CheckInEndTime : '' }</dd>
+            <dt>チェックアウト</dt>
+            <dd>{ hotel.CheckOutTime }</dd>
+            <dt>ホテルID</dt>
+            <dd>{ hotel.HotelID }</dd>
+            <dt>アメニティ</dt>
+            <dd>{ amenities }</dd>
+            <dt>HotelMandatoryTaxesAndFees</dt>
+            <dd>{ (!hotel.HotelMandatoryTaxesAndFees) ? 'なし' : hotel.HotelMandatoryTaxesAndFees.Value }</dd>
+          </dl>
+        </div>
       </div>
     );
   }
