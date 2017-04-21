@@ -102,7 +102,7 @@ export default class FacilityDetail extends React.Component {
         <div className="FacilityDetail-item">
           <dl>
             <dt>詳細</dt>
-            <dd><a href={ hotel.DetailsUrl } target="_blank">{ hotel.DetailsUrl }</a></dd>
+            <dd><a href={ hotel.DetailsUrl } className="btn btn-default" target="_blank">詳細リンク</a></dd>
             <dt>チェックイン</dt>
             <dd>{ hotel.CheckInStartTime }{ (hotel.CheckInEndTime) ? ' 〜 ' + hotel.CheckInEndTime : '' }</dd>
             <dt>チェックアウト</dt>
